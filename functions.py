@@ -5,7 +5,7 @@ from database import *
 
 
 def start(update:Update, context:CallbackContext):
-    print('salom')
+    print('Asalomu alaykum')
     if chek_user(update.effective_user.id):
         update.message.reply_text("Salom",reply_markup=main_buttons())
         return 'state_main'
