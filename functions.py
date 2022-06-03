@@ -4,13 +4,11 @@ from Buttons import *
 from database import *
 
 
-
-
 def start(update:Update, context:CallbackContext):
+    print('salom')
     if chek_user(update.effective_user.id):
         update.message.reply_text("Salom",reply_markup=main_buttons())
         return 'state_main'
-    print(salom)
     update.message.reply_text("Assalomu alaykum Botimizga xush kelibsiz\n"
                               "Ro'yxatdan o'tish uchun FIO ni yuboring", reply_markup=ReplyKeyboardRemove())
     return 'state_name'
