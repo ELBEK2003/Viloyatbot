@@ -1,4 +1,4 @@
-from telegram.ext import  Updater,CommandHandler,MessageHandler,Filters,CallbackContext,ConversationHandler
+from telegram.ext import  Updater,CommandHandler,CallbackQueryHandler, MessageHandler,Filters,CallbackContext,ConversationHandler
 from telegram import Update
 import logging
 from functions import *
@@ -22,25 +22,29 @@ conv_handler=ConversationHandler(
 
         ],
         'state_phone':[
+            MessageHandler(Filters.text,command_phone),
             MessageHandler(Filters.contact,command_phone)
         ],
         'state_viloyat':[
-        MessageHandler(Filters.text,command_viloyat)
+            CommandHandler('start',start),
+            MessageHandler(Filters.text,command_viloyat)
+        ],
+        'state_main':[
+            CallbackQueryHandler(commandd_category)
+
         ]
+
 
     },
     fallbacks=[
         CommandHandler('start',start)
 
     ],
-
-
 )
 
-updater=Updater("5210102433:AAEMtfsltMYTpogmhuOYVk5TosdQw-NlUnE")
+updater=Updater("5210102433:AAGHePETy_WihAJKmAkor8yvEOR3ywkf2f8")
 updater.dispatcher.add_handler(conv_handler)
 updater.start_polling()
 updater.idle()
 
 # print(updater)
-
